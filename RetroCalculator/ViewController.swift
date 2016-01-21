@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         case multiplica = "*"
         case divide = "/"
         case vazio = "Vazio"
+        case clear = "Clear"
         
     }
     
@@ -80,11 +81,18 @@ class ViewController: UIViewController {
         operacoes(operacaoAtual)
     }
     
+    
+    @IBAction func clearPressionado(sender: AnyObject) {
+        operacoes(Operacao.clear)
+    }
+    
+    
     func operacoes(op: Operacao){
         playSound()
-        if operacaoAtual != Operacao.vazio{
+        if operacaoAtual != Operacao.vazio && operacaoAtual != Operacao.clear{
             
             if numeroCorrente != ""{
+                
                 
                 numeroDireta = numeroCorrente
                 numeroCorrente = ""
@@ -106,7 +114,8 @@ class ViewController: UIViewController {
                 
                 resultLabel.text = resultado
             }
-                
+            
+            
             operacaoAtual = op
             
         }else {
@@ -114,6 +123,21 @@ class ViewController: UIViewController {
             numeroCorrente = ""
             operacaoAtual = op
         }
+        
+        if  operacaoAtual != Operacao.vazio{
+         
+            if operacaoAtual == Operacao.clear {
+                numeroCorrente = ""
+                numeroDireta = ""
+                numeroEsquerda = ""
+                operacaoAtual = op
+                resultado = ""
+                resultLabel.text = "0.0"
+            }
+            
+        }
+
     }
+    
 }
 
