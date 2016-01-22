@@ -59,6 +59,7 @@ class ViewController: UIViewController {
         }
         
         btAudioPlayer.play()
+        
     }
 
     @IBAction func somaPressionado(sender: AnyObject) {
